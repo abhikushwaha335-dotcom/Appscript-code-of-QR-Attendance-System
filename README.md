@@ -2,7 +2,8 @@
 
 ---
 ## Important links:
-- **Google Form Link:https://forms.gle/WGitvtaTJMnzi24y9**
+- **Google Form Link:https://forms.gle/WGitvtaTJMnzi24y9  or can scan this QR** <p align="centre"> <img   alt="Screenshot 2026-01-02 122717" src="https://github.com/user-attachments/assets/ba83b81f-e582-413b-9299-04c974fb33ea" width="120"></p>
+
 - **Google Sheet Link:https://docs.google.com/spreadsheets/d/1WG-ypzmuwKhGe-Rja-ydxMNsuUvGwmR2Co_BxlYI0cM/edit?usp=sharing**
 - **Pabbly Connect Workflow Link:https://connect.pabbly.com/v2/app/workflow/share/DEQDMVAHUzBSGAljAmdQdwoeBwNQCQZkV05TQVdYB39UGQNWUxJdN1wQAiBUNVIzURgFbwdbDDcLHwQACF5TIAceAj5XVFUvVxoBelQZDzwMUgMrUDE#**
 ---
