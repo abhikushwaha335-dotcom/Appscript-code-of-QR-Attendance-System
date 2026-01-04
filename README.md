@@ -24,15 +24,13 @@ function processLocation(data)
 {
   if (!data || data.lat == null || data.lng == null) return;
 
-  var ss = SpreadsheetApp.openById('1WG-ypzmuwKhGe-Rja-ydxMNsuUvGwmR2Co_BxlYI0cM');       // same ID as now
-  var sheet = ss.getSheetByName('Form responses 1');     // exact sheet tab name
-
+  var ss = SpreadsheetApp.openById('1WG-ypzmuwKhGe-Rja-ydxMNsuUvGwmR2Co_BxlYI0cM');      
+  var sheet = ss.getSheetByName('Form responses 1');    
   var lat = data.lat;
   var lng = data.lng;
   var mapsLink = 'https://maps.google.com/?q=' + lat + ',' + lng;
 
-  var lastRow = sheet.getLastRow();    // row where the latest form response is
-
+  var lastRow = sheet.getLastRow();   
  
   sheet.getRange(lastRow, 5).setValue(lat);       // column E
   sheet.getRange(lastRow, 6).setValue(lng);       // column F
