@@ -1,24 +1,37 @@
 # Appscript-code-of-QR-Attendance-System
 
-Apps Script Codes:-
+---
+## Important links:
+- **Google Form Link:https://forms.gle/WGitvtaTJMnzi24y9**
+- **Google Sheet Link:https://docs.google.com/spreadsheets/d/1WG-ypzmuwKhGe-Rja-ydxMNsuUvGwmR2Co_BxlYI0cM/edit?usp=sharing**
+- **Pabbly Connect Workflow Link:https://connect.pabbly.com/v2/app/workflow/share/DEQDMVAHUzBSGAljAmdQdwoeBwNQCQZkV05TQVdYB39UGQNWUxJdN1wQAiBUNVIzURgFbwdbDDcLHwQACF5TIAceAj5XVFUvVxoBelQZDzwMUgMrUDE#**
+---
+  
+## Apps Script Codes:-
 
-Code.gs:
+**We can directly apply these codes from Google Sheets also by:**
+**open Google Sheet➡️ Extensions➡️ Apps Script.**
+
+### Code.gs:
+
+-----
+
 function doGet() {
   return HtmlService.createHtmlOutputFromFile('Index')
-    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
-}
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);}
 
-function processLocation(data) {
+function processLocation(data)
+{
   if (!data || data.lat == null || data.lng == null) return;
 
-  var ss = SpreadsheetApp.openById('1WG-ypzmuwKhGe-Rja-ydxMNsuUvGwmR2Co_BxlYI0cM');      // same ID as now
-  var sheet = ss.getSheetByName('Form responses 1');      // exact sheet tab name
+  var ss = SpreadsheetApp.openById('1WG-ypzmuwKhGe-Rja-ydxMNsuUvGwmR2Co_BxlYI0cM');       // same ID as now
+  var sheet = ss.getSheetByName('Form responses 1');     // exact sheet tab name
 
   var lat = data.lat;
   var lng = data.lng;
   var mapsLink = 'https://maps.google.com/?q=' + lat + ',' + lng;
 
-  var lastRow = sheet.getLastRow();   // row where the latest form response is
+  var lastRow = sheet.getLastRow();    // row where the latest form response is
 
  
   sheet.getRange(lastRow, 5).setValue(lat);       // column E
@@ -27,10 +40,10 @@ function processLocation(data) {
 }
 
 function onFormSubmit(e) {
-  try {
-    // e.values: [Timestamp, Name, Roll, Department, Lat, Lng, MapsLink, ...]
-    var row = e.values;  // always exists when triggered correctly
-
+    try {
+    // e.values: [Timestamp, Name, Roll, Department, Lat, Lng, MapsLink, ...] 
+    var row = e.values;     // always exists when triggered correctly
+    
     var payload = {
       timestamp: row[0] || '',
       student_name: row[1] || '',
@@ -54,25 +67,38 @@ function onFormSubmit(e) {
     Logger.log(res.getResponseCode());
     Logger.log(res.getContentText());
 
-  } catch (err) {
+  } 
+  
+  catch (err)  
+  {
     Logger.log('onFormSubmit error: ' + err);
     throw err; // so you can see it in Executions
   }
 }
 
-index.html code:
+-----
+
+**Make a index.html file then copy this code in it.**
+### index.html code:
+----
+
 <!DOCTYPE html>
 <html>
 <head><title>Location Capture</title></head>
 <body>
+  
   <h3>Allow location access to continue...</h3>
+  
   <script>
-    navigator.geolocation.getCurrentPosition(function(position) {
+    navigator.geolocation.getCurrentPosition(function(position)  {
       var data = {lat: position.coords.latitude, lng: position.coords.longitude};
       google.script.run.withSuccessHandler(function() {
-        alert('Location saved!'); window.close();
+          alert('Location saved!'); window.close();
       }).processLocation(data);
     }, function() { alert('Location denied.'); window.close(); });
   </script>
+  
 </body>
 </html>
+
+-----
